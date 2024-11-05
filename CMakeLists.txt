@@ -12,7 +12,7 @@ endif()
 project ("P2A5_LinkedList")
 
 # Add source to this project's executable.
-add_executable (P2A5_LinkedList "main.cpp" 
+add_executable (P2A5_LinkedList "listTest.cpp" 
 								"linkedlist.cpp" "linkedlist.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
