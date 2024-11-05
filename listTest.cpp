@@ -15,6 +15,8 @@
 #include <cstdlib>
 #include <ctime>
 
+const int fileElements = 10;
+
 // Type definitions:
 enum class ExecState
 {
@@ -118,6 +120,37 @@ static void fileTest(ExecState& s)
     s = ExecState::ok;
 }
 
+//Funktion um eine zufällige Dateu zu erstellen
+void generateFile(ExecState& s) {
+
+    // Datei öffnen und leeren
+    std::ofstream outputFile("listdata.dat", std::ios::trunc);
+
+    // Prüfen ob die datei geöffnet wurde
+    if (!outputFile.is_open()) {
+        std::cerr << "Error opening file." << std::endl;
+        s = ExecState::nok;  // ExecState updaten
+        return;
+    }
+
+    // Seed für rand()
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
+    unsigned int divider = RAND_MAX / 200;
+    // Zufällige int in datei schreiben
+    for (int i = 0; i < fileElements; ++i) {
+        int randomInt = rand() / divider - RAND_MAX / 2 / divider;
+        outputFile << randomInt << '\n';
+    }
+
+    // Datei schließen
+    outputFile.close();
+
+    s = ExecState::ok;
+
+    std::cout << "File 'listdata.dat' created successfully with random integers." << std::endl;
+}
+
 /**
  *  \brief returns exit status.
  *  
@@ -138,6 +171,7 @@ const Menu mMenu[]
 {
     {'0', "Random Test", randomTest},
     {'1', "File Test",   fileTest},
+    {'2', "Create random File", generateFile},
     {'9', "Exit",        exit}
 };
 
