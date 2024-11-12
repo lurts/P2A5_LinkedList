@@ -17,7 +17,7 @@ public:
         head(nullptr) 
         {};
     // Destructor, gibt Memory wieder frei
-    // startet bei "head" und löscht alle elemente der Liste (läuft bis das nächste element nullptr ist)
+    // startet bei "head" und lï¿½scht alle elemente der Liste (lï¿½uft bis das nï¿½chste element nullptr ist)
     ~LinkedList() {
         Node* next;
 
@@ -28,21 +28,21 @@ public:
         }
     }
 
-    // Gibt die Anzahl an Elementen in der Liste zurück
-    int size() const;
+    // Gibt die Anzahl an Elementen in der Liste zurï¿½ck
+    unsigned int size() const;
 
-    // Gibt den Pointer zum Head der Liste zurück
-    Node* getHead() const;
+    // Gibt den Pointer zum Head der Liste zurï¿½ck
+    // Node* getHead() const;
 
-    // Gibt den Wert an einem bestimmten Index zurück
-    int at(int index) const;
+    // Gibt den Wert an einem bestimmten Index zurï¿½ck
+    int at(unsigned int index) const;
 
-    // Hängt ein neues Element hinten an
+    // Hï¿½ngt ein neues Element hinten an
     void append(int nvalue);
 
     // Sortiert ein neues Element in die Liste ein
     void sortAppend(int nvalue);
 };
 
-// Gibt die Summe aller Elemente zurück
+// Gibt die Summe aller Elemente zurï¿½ck
 int sum(const LinkedList& list);

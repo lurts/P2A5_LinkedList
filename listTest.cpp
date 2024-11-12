@@ -120,30 +120,30 @@ static void fileTest(ExecState& s)
     s = ExecState::ok;
 }
 
-//Funktion um eine zufällige Dateu zu erstellen
+//Funktion um eine zufï¿½llige Dateu zu erstellen
 void generateFile(ExecState& s) {
 
-    // Datei öffnen und leeren
+    // Datei ï¿½ffnen und leeren
     std::ofstream outputFile("listdata.dat", std::ios::trunc);
 
-    // Prüfen ob die datei geöffnet wurde
+    // Prï¿½fen ob die datei geï¿½ffnet wurde
     if (!outputFile.is_open()) {
         std::cerr << "Error opening file." << std::endl;
         s = ExecState::nok;  // ExecState updaten
         return;
     }
 
-    // Seed für rand()
+    // Seed fï¿½r rand()
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
     unsigned int divider = RAND_MAX / 200;
-    // Zufällige int in datei schreiben
+    // Zufï¿½llige int in datei schreiben
     for (int i = 0; i < fileElements; ++i) {
         int randomInt = rand() / divider - RAND_MAX / 2 / divider;
         outputFile << randomInt << '\n';
     }
 
-    // Datei schließen
+    // Datei schlieï¿½en
     outputFile.close();
 
     s = ExecState::ok;
@@ -180,6 +180,7 @@ int main()
 {
     ExecState s(ExecState::ok);
     srand(time(0));
+
 
     do
     {

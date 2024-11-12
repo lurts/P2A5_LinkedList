@@ -1,11 +1,11 @@
 #include "linkedlist.h"
-#include <stdexcept> // für std::out_of_range
+#include <stdexcept> // fï¿½r std::out_of_range
 
-int LinkedList::size() const {
-	int count = 0;
+unsigned int LinkedList::size() const {
+	unsigned int count = 0;
 	Node* current = head;
 
-	// Listenelemente durchlaufen und mitzählen bis am Ende (nullptr) angekommen
+	// Listenelemente durchlaufen und mitzï¿½hlen bis am Ende (nullptr) angekommen
 	while (current != nullptr) {
 		count++;
 		current = current->next;
@@ -14,15 +14,16 @@ int LinkedList::size() const {
 	return count;
 }
 
-LinkedList::Node* LinkedList::getHead() const {
-	return head;
-}
+//LinkedList::Node* LinkedList::getHead() const {
+//	return head;
+//}
 
-int LinkedList::at(int index) const {
-	// Wird kein korrekter index (index < 0 oder index > list.size()) übergeben wird ne exception geworfen. 
-	// programm hält an und es kommen keine unerwarteten werte zurück (besser als "return INT_MIN"?)
-	if (index < 0 || index >= size()) {
-		throw std::out_of_range("Index is out of range!");
+int LinkedList::at(unsigned int index) const {
+	// Wird kein korrekter index (index < 0 oder index > list.size()) ï¿½bergeben wird ne exception geworfen. 
+	// programm hï¿½lt an und es kommen keine unerwarteten werte zurï¿½ck (besser als "return INT_MIN"?)
+	if (index >= size()) {
+		//throw std::out_of_range("Index is out of range!");
+        return -1;
 	}
 
 	Node* current = head;
@@ -37,12 +38,12 @@ int LinkedList::at(int index) const {
 	return current->data;
 }
 
-// Hängt ein neues element stumpf hinten an die liste an
+// Hï¿½ngt ein neues element stumpf hinten an die liste an
 void LinkedList::append(int nvalue) {
-	//neue Node mit übergebenen Wert anlegen
+	//neue Node mit ï¿½bergebenen Wert anlegen
 	Node* newNode = new Node(nvalue);
 
-	// Prüfen ob die liste leer ist
+	// Prï¿½fen ob die liste leer ist
 	// bei leerer liste wird die neue Node einfach zum head
 	if (head == nullptr) {
 		head = newNode;
@@ -56,36 +57,36 @@ void LinkedList::append(int nvalue) {
 	}
 	// das letzte element ist jetzt das "current" element
 
-	// element anhängen
+	// element anhï¿½ngen
 	current->next = newNode;
 	return;
 }
 
 void LinkedList::sortAppend(int nvalue) {
-	// neue Node mit übergebenen Wert anlegen
+	// neue Node mit ï¿½bergebenen Wert anlegen
 	Node* newNode = new Node(nvalue);
 
-	// Prüfen ob die liste leer ist
+	// Prï¿½fen ob die liste leer ist
 	// bei leerer liste wird die neue Node einfach zum head
 	if (head == nullptr) {
 		head = newNode;
 		return;
 	}
 
-	// ist das erste element schon größer oder gleich dem neuen wird das neue element als head eingefügt
+	// ist das erste element schon grï¿½ï¿½er oder gleich dem neuen wird das neue element als head eingefï¿½gt
 	if (nvalue <= head->data) {
 		newNode->next = head;
 		head = newNode;
 		return;
 	}
 
-	// liste durchlaufen bis ein größeres element oder das listenende gefunden wurde
+	// liste durchlaufen bis ein grï¿½ï¿½eres element oder das listenende gefunden wurde
 	Node* current = head;
 	while (current->next != nullptr && nvalue > current->next->data) {
 		current = current->next;
 	}
 
-	// neue node einfügen und pointer aktualisieren
+	// neue node einfï¿½gen und pointer aktualisieren
 	newNode->next = current->next;
 	current->next = newNode;
 	return;
@@ -93,10 +94,10 @@ void LinkedList::sortAppend(int nvalue) {
 
 int sum(const LinkedList& list) {
 	int sum = 0;
-	int listSize = list.size();	// die anzahl der elemente in der liste holen
+	unsigned int listSize = list.size();	// die anzahl der elemente in der liste holen
 
 	// die liste komplett durchlaufen und alle werte aufaddieren
-	for (int i = 0; i < listSize; ++i) {
+	for (unsigned int i = 0; i < listSize; ++i) {
 		sum += list.at(i);
 	}
 
